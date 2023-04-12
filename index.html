@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+</head>
+<body>
+    
+    <h1>Prueba leer json</h1>
+    <p>desde archivo:</p>
+    <p id="salida"></p>
+    <p>desde variable:</p>
+    <p id="salida2"></p>
+
+<script>
+// Json importado:
+
+    function loadJSON(escribimos) {
+    var xObj = new XMLHttpRequest();
+    xObj.overrideMimeType("application/json");
+    xObj.open('GET', './secretos.json', true);
+    xObj.onreadystatechange = function() {
+        if (xObj.readyState === 4 && xObj.status === 200) {
+            var contenido = xObj.responseText;
+            escribimos(contenido);
+        }
+    };
+    xObj.send(null);
+    }
+
+    function vamos() {
+    loadJSON(function(response) {
+            var json = JSON.parse(response);
+            document.getElementById("salida").innerHTML =
+            'login:' + json.menu.login + '<br/>pass:' + json.menu.pass;
+        });
+    }
+
+    vamos();
+
+// Json de variable:
+    var hazlo = function() {
+        const texto = '{"login":"pato","pass":"cuac"}';
+        const json = JSON.parse(texto);
+        document.getElementById("salida2").innerHTML =
+        'login:' + json.login + '<br/>pass:' + json.pass;
+    };
+
+    hazlo();
+
+</script>
+  </body>
+</html>
