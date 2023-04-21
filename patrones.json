@@ -1,0 +1,9 @@
+{
+    "patron": [
+        { "nombre": "Singleton", "tipo": "Classic" },
+        { "nombre": "GameLoop", "tipo": "Sequencing" },
+        { "nombre": "EventQueue", "tipo": "Decoupling" },
+        { "nombre": "DirtyFlag", "tipo": "Optimization" },
+        { "nombre": "Factory", "tipo": "Classic" }
+    ]
+}
